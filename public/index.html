@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileOrganizerPro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FileOrganizerPro</h1>
+            <p>Organize your files automatically</p>
+        </header>
+        
+        <main>
+            <div class="upload-area" id="uploadArea">
+                <h3>Drop files here or click to browse</h3>
+                <input type="file" id="fileInput" multiple hidden>
+                <p>Supports all file types</p>
+            </div>
+            
+            <div class="controls">
+                <button id="organizeBtn" disabled>Organize Files</button>
+            </div>
+            
+            <div class="results" id="results" style="display: none;">
+                <h3>Organization Results</h3>
+                <ul id="resultsList"></ul>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

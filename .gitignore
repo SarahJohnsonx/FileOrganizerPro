@@ -1,6 +1,7 @@
 node_modules/
 *.tmp
 .env
+uploads/
 .claude
 dist/
 *.log

@@ -63,6 +63,54 @@ function getFileCategory(filename) {
     return 'others';
 }
 
+app.post('/organize', (req, res) => {
+    try {
+        const { targetPath } = req.body;
+        
+        if (!targetPath || !fs.existsSync(targetPath)) {
+            return res.status(400).json({ error: 'Invalid target path' });
+        }
+
+        const organizationResult = organizeFiles(targetPath);
+        res.json({ success: true, result: organizationResult });
+        
+    } catch (error) {
+        res.status(500).json({ error: 'Organization failed' });
+    }
+});
+
+function organizeFiles(targetPath) {
+    const files = fs.readdirSync(targetPath);
+    const organized = {};
+
+    files.forEach(filename => {
+        const filePath = path.join(targetPath, filename);
+        const stats = fs.statSync(filePath);
+        
+        if (stats.isFile()) {
+            const category = getFileCategory(filename);
+            const categoryDir = path.join(targetPath, category);
+            
+            if (!fs.existsSync(categoryDir)) {
+                fs.mkdirSync(categoryDir);
+            }
+            
+            const newPath = path.join(categoryDir, filename);
+            
+            if (!organized[category]) {
+                organized[category] = [];
+            }
+            
+            organized[category].push({
+                original: filename,
+                moved: newPath.replace(targetPath, '.')
+            });
+        }
+    });
+    
+    return organized;
+}
+
 app.listen(PORT, () => {
     console.log(`FileOrganizerPro server running on port ${PORT}`);
 });

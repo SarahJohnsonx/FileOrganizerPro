@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - FileOrganizerPro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            transition: background 0.3s;
+        }
+        .nav a:hover, .nav a.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .setting-group {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+        .setting-group h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .custom-rule {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .custom-rule input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .remove-rule {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FileOrganizerPro</h1>
+            <div class="nav">
+                <a href="index.html">Home</a>
+                <a href="settings.html" class="active">Settings</a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="setting-group">
+                <h3>Default Categories</h3>
+                <div id="defaultCategories">
+                    <div>Images: jpg, jpeg, png, gif, bmp, svg, webp</div>
+                    <div>Documents: pdf, doc, docx, txt, rtf, odt</div>
+                    <div>Videos: mp4, avi, mov, wmv, flv, webm, mkv</div>
+                    <div>Audio: mp3, wav, flac, aac, ogg, wma</div>
+                    <div>Archives: zip, rar, 7z, tar, gz</div>
+                    <div>Code: js, html, css, py, java, cpp, c, php</div>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3>Custom Rules</h3>
+                <div id="customRules">
+                    <!-- Dynamic content -->
+                </div>
+                <button id="addRuleBtn" class="btn">Add Custom Rule</button>
+            </div>
+
+            <div class="setting-group">
+                <h3>Organization Settings</h3>
+                <label>
+                    <input type="checkbox" id="createSubfolders" checked>
+                    Create category subfolders
+                </label><br><br>
+                <label>
+                    <input type="checkbox" id="preserveStructure">
+                    Preserve original folder structure
+                </label>
+            </div>
+
+            <div class="controls">
+                <button id="saveSettings" class="btn">Save Settings</button>
+                <button id="resetSettings" class="btn" style="background: #6c757d;">Reset to Default</button>
+            </div>
+        </main>
+    </div>
+    
+    <script src="settings.js"></script>
+</body>
+</html>
